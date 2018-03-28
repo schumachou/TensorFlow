@@ -1,12 +1,12 @@
 from oauth2client.client import GoogleCredentials
 import googleapiclient.discovery
 
-# Change this values to match your project
-PROJECT_ID = "tensorflow-class-170621"
+# project info
+PROJECT_ID = "tensorflow-class-199302"
 MODEL_NAME = "earnings"
 CREDENTIALS_FILE = "credentials.json"
 
-# These are the values we want a prediction for
+# values for prediction
 inputs_for_prediction = [
     {"input": [0.4999, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.5]}
 ]
@@ -15,7 +15,7 @@ inputs_for_prediction = [
 credentials = GoogleCredentials.from_stream(CREDENTIALS_FILE)
 service = googleapiclient.discovery.build('ml', 'v1', credentials=credentials)
 
-# Connect to our Prediction Model
+# Connect to Prediction Model
 name = 'projects/{}/models/{}'.format(PROJECT_ID, MODEL_NAME)
 response = service.projects().predict(
     name=name,
